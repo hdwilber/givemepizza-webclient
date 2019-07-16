@@ -38,3 +38,22 @@ export function* getPizzaSaga({ payload }) {
     })
   }
 }
+
+export function* createPizzaSaga({payload}) {
+  try {
+    const { data } = payload
+    const result = yield call(services.createPizza, data )
+    payload.result = result
+
+    yield put({
+      type: types.createPizza[1],
+      payload,
+    })
+  } catch (error) {
+    payload.error = error
+    yield put({
+      type: types.createPizza[2],
+      payload,
+    })
+  }
+}

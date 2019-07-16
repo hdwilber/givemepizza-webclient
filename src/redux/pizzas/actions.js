@@ -1,13 +1,10 @@
-export const types = {
-  getPizzas: ['GET_PIZZAS',
-    'GET_PIZZAS_SUCCESS',
-    'GET_PIZZAS_FAILED',
-  ],
-  getPizza: ['GET_PIZZA',
-    'GET_PIZZA_SUCCESS',
-    'GET_PIZZA_FAILED',
-  ],
-}
+import { generateActionTypes } from '../utils'
+
+export const types = generateActionTypes([
+  'getPizzas',
+  'getPizza',
+  'createPizza',
+])
 
 export function getPizzas() {
   return {
@@ -20,5 +17,14 @@ export function getPizza(id) {
   return {
     type: types.getPizza[0],
     pizzaId: id,
+  }
+}
+
+export function createPizza(data) {
+  return {
+    type: types.createPizza[0],
+    payload: {
+      data,
+    }
   }
 }

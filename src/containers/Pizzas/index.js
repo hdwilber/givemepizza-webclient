@@ -13,6 +13,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     getPizzas: () => dispatch(pizzasActions.getPizzas()),
+    createPizza: data => dispatch(pizzasActions.createPizza(data)),
   }
 }
 

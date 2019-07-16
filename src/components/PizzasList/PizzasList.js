@@ -8,8 +8,14 @@ class PizzasList extends React.PureComponent {
     return (
       <ul>
         { items.map(item => {
+          const { _id, toppings, name } = item
+          const toppingsString = toppings.map(top => top.name).join(',')
           return (
-            <Pizza {...item} />
+            <li key={_id}>
+              {name}
+              - Toppings:
+              { toppingsString }
+            </li>
           )
         })
         }

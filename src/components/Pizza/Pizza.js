@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
 
-export default function Pizza(props) {
-  const { name, toppings } = props
+function Pizza(props) {
+  const { name, toppings, key } = props
   const toppingsString = toppings.map(top => top.name).join(',')
   return (
-    <p>
+    <p key={key}>
       <span>{ name }</span>
       - Toppings:
       { toppingsString }
@@ -21,3 +21,4 @@ Pizza.defaultProps = {
   toppings: [],
 }
 
+export default Pizza

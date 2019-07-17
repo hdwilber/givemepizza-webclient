@@ -1,5 +1,6 @@
 import * as services from '../../services'
 import { types } from './actions'
+import { types as statusTypes } from '../status/actions'
 import { call, put, } from 'redux-saga/effects'
 
 export function* getAllPizzasSaga({ payload }) {
@@ -41,6 +42,16 @@ export function* getPizzaSaga({ payload }) {
 
 export function* createPizzaSaga({payload}) {
   try {
+    yield put({
+      type: statusTypes.addRequest,
+      payload: {
+        info: {
+          path: 'pizzas.createPizza',
+          name: 'Create pizza',
+          description: 'foo',
+        }
+      }
+    })
     const { data } = payload
     const result = yield call(services.createPizza, data )
     payload.result = result

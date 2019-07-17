@@ -27,7 +27,7 @@ export async function createPizza(data) {
   })
   if (response.ok) {
     const result = await response.json()
-    return result.toppings
+    return result.pizza
   }
   throw new Error('Not able to create a new pizza')
 }
@@ -41,7 +41,7 @@ export async function removePizza(id) {
   })
   if (response.ok) {
     const result = await response.json()
-    return result.toppings
+    return result
   }
   throw new Error('Not able to delete a new pizza')
 }
@@ -60,7 +60,7 @@ export async function addTopping(id, toppingId) {
   throw new Error('Not able to add a topping in pizza')
 }
 
-export async function deleteTopping(id, toppingId) {
+export async function removeTopping(id, toppingId) {
   const headers = new Headers()
   headers.append('content-type', 'application/json')
   const response = await fetch(`${REACT_APP_API_URL}/pizzas/${id}/topping/${toppingId}`, {
@@ -93,12 +93,12 @@ export async function createTopping(data) {
   })
   if (response.ok) {
     const result = await response.json()
-    return result.toppings
+    return result.topping
   }
   throw new Error('Not able to create a new topping')
 }
 
-export async function removeTopping(id) {
+export async function deleteTopping(id) {
   const headers = new Headers()
   headers.append('content-type', 'application/json')
   const response = await fetch(`${REACT_APP_API_URL}/toppings/${id}`, {

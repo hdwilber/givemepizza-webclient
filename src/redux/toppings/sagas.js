@@ -40,6 +40,10 @@ export function* createToppingSaga({payload}) {
       type: types.createTopping[1],
       payload,
     })
+    yield put({
+      type: types.getToppings[0],
+      payload,
+    })
   } catch (error) {
     payload.error = error
     yield put({
@@ -62,7 +66,7 @@ export function* deleteToppingSaga({payload}) {
       }
     })
     const { toppingId } = payload
-    const result = yield call(services.removeTopping, toppingId)
+    const result = yield call(services.deleteTopping, toppingId)
     payload.result = result
 
     yield put({

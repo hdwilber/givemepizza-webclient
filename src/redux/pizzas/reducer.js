@@ -7,6 +7,8 @@ const initialState = {
   },
   createPizza: null,
   deletePizza: null,
+  addTopping: null,
+  removeTopping: null,
 }
 
 export default function pizzas(state = initialState, action) {
@@ -112,6 +114,69 @@ export default function pizzas(state = initialState, action) {
       }
     }
 
+    case types.addTopping[0]: {
+      return {
+        ...state,
+        addTopping: {
+          loading: true,
+          loaded: false,
+        }
+      }
+    }
+    case types.addTopping[1]: {
+      const { result } = action.payload
+      return {
+        ...state,
+        addTopping: {
+          loading: false,
+          loaded: true,
+          data: result,
+        }
+      }
+    }
+    case types.addTopping[2]: {
+      const { error } = action.payload
+      return {
+        ...state,
+        addTopping: {
+          loading: false,
+          loaded: true,
+          error,
+        }
+      }
+    }
+
+    case types.removeTopping[0]: {
+      return {
+        ...state,
+        removeTopping: {
+          loading: true,
+          loaded: false,
+        }
+      }
+    }
+    case types.removeTopping[1]: {
+      const { result } = action.payload
+      return {
+        ...state,
+        removeTopping: {
+          loading: false,
+          loaded: true,
+          data: result,
+        }
+      }
+    }
+    case types.removeTopping[2]: {
+      const { error } = action.payload
+      return {
+        ...state,
+        removeTopping: {
+          loading: false,
+          loaded: true,
+          error,
+        }
+      }
+    }
     default:
       return state
   }

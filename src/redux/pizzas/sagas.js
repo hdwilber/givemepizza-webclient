@@ -7,7 +7,6 @@ export function* getAllPizzasSaga({ payload }) {
   try {
     const result = yield call(services.getAllPizzas)
     payload.result = result
-    console.log(payload);
 
     yield put({
       type: types.getPizzas[1],
@@ -127,30 +126,30 @@ export function* addToppingSaga({payload}) {
   }
 }
 
-export function* deleteToppingSaga({payload}) {
+export function* removeToppingSaga({payload}) {
   try {
     yield put({
       type: statusTypes.addRequest,
       payload: {
         info: {
-          path: 'pizzas.deleteTopping',
-          name: 'Delete topping to pizza',
+          path: 'pizzas.removeToppingSaga',
+          name: 'Remove topping from pizza',
           description: 'foo',
         }
       }
     })
     const { pizzaId, toppingId } = payload
-    const result = yield call(services.deleteTopping, pizzaId, toppingId)
+    const result = yield call(services.removeTopping, pizzaId, toppingId)
     payload.result = result
 
     yield put({
-      type: types.deleteTopping[1],
+      type: types.removeTopping[1],
       payload,
     })
   } catch (error) {
     payload.error = error
     yield put({
-      type: types.deleteTopping[2],
+      type: types.removeTopping[2],
       payload,
     })
   }

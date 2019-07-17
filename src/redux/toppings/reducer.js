@@ -1,3 +1,4 @@
+import _get from 'lodash/get'
 import { types } from './actions'
 const initialState = {
   list :{
@@ -55,13 +56,19 @@ export default function toppings(state = initialState, action) {
 
     case types.createTopping[1]: {
       const { result } = action.payload
+      const list = _get(state, 'list')
       return {
         ...state,
         createTopping: {
           loading: false,
           loaded: true,
           data: result,
+        },
+        list: {
+          ...list,
+          data: list.data.concat([result]),
         }
+
       }
     }
 
@@ -88,14 +95,20 @@ export default function toppings(state = initialState, action) {
     }
 
     case types.deleteTopping[1]: {
-      const { result } = action.payload
+      const { result, toppingId } = action.payload
+      const list = _get(state, 'list')
       return {
         ...state,
         deleteTopping: {
           loading: false,
           loaded: true,
           data: result,
+        },
+        list: {
+          ...list,
+          data: list.data.filter(t => t._id !== toppingId),
         }
+        
       }
     }
 

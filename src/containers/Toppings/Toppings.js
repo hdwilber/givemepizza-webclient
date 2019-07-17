@@ -14,6 +14,10 @@ class Toppings extends React.PureComponent {
     this.props.createTopping({
       name: newTopping,
     })
+
+    this.setState({
+      newTopping: '',
+    })
   }
 
   handleChange = e => {
@@ -22,6 +26,12 @@ class Toppings extends React.PureComponent {
       [name]: value,
     })
   }
+
+  handleDeleteClick = ({_id}) => {
+    const { deleteTopping } = this.props
+    deleteTopping(_id)
+  }
+
   render() {
     const { toppings } = this.props
     const { newTopping } = this.state
@@ -42,7 +52,7 @@ class Toppings extends React.PureComponent {
             return (
               <li>
                 {name}
-                <button>X</button>
+                <button onClick={() => this.handleDeleteClick(topping)}>X</button>
               </li>
             )
             })

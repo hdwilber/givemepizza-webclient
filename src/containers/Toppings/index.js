@@ -14,6 +14,7 @@ function mapDispatchToProps(dispatch) {
   return {
     getToppings: () => dispatch(toppingsActions.getToppings()),
     createTopping: data => dispatch(toppingsActions.createTopping(data)),
+    deleteTopping: id => dispatch(toppingsActions.deleteTopping(id)),
   }
 }
 

@@ -36,6 +36,12 @@ an improvement for the logged user is important.
 - Use of a CSS library / framework. In order to have a better presentation to the user. The use of some library would be nice
 
 
+
+----------------------
+----------------------
+----------------------
+
+# Original README from react scripts
 ## Available Scripts
 
 In the project directory, you can run:

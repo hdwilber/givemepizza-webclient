@@ -27,6 +27,19 @@ This is handled in this way due to make tests easier to write.
 - redux: This folder handles the redux store / reducers / actions / sagas and watchers when is required. For example: Pizzas and Toppins need to do asynchronous requests but status neither app  do not.
 - services.js: This file handles the requests we need to pizzas and toppings and their relationships
 
+### Screenshoots
+When user clicks the Pizzas menu item at top.
+![Pizza Page](https://github.com/hdwilber/givemepizza-webclient/blob/master/doc/page-pizza.png)
+
+When user clicks the Toppings menu item at top.
+![Toppings Page](https://github.com/hdwilber/givemepizza-webclient/blob/master/doc/page-toppings.png)
+
+When user clicks a pizza item
+![Pizza Toppings Modal](https://github.com/hdwilber/givemepizza-webclient/blob/master/doc/pizzas-toppings.png)
+
+When ther is not toppings created
+![No Toppings Created](https://github.com/hdwilber/givemepizza-webclient/blob/master/doc/no-toppings.png)
+
 ### Future Improvements
 - Allow support for authorization and/or authentication. Each rquest should send a authorization token
 an improvement for the logged user is important.
@@ -34,6 +47,7 @@ an improvement for the logged user is important.
 - Code coverage: currently, Unit tests are not covering all the code. I was able to push only full coverage for components and Pizzas page.
 - Throttle some requests. currently, only when adding/removing toppings to pizza are throttled.
 - Use of a CSS library / framework. In order to have a better presentation to the user. The use of some library would be nice
+
 
 
 

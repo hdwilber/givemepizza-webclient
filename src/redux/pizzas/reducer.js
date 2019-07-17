@@ -14,6 +14,12 @@ const initialState = {
 
 export default function pizzas(state = initialState, action) {
   switch (action.type) {
+    case types.createPizzaClear: {
+      return {
+        ...state,
+        createPizza: null,
+      }
+    }
     case types.getPizzas[0]: {
       return {
         ...state,

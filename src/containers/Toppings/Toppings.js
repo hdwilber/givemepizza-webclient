@@ -6,6 +6,7 @@ class Toppings extends React.PureComponent {
     newTopping: '',
   }
   componentDidMount() {
+    this.props.clear()
     this.props.getToppings()
   }
 

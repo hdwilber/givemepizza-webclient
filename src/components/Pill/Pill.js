@@ -12,7 +12,11 @@ class Pill extends React.PureComponent {
         <span 
           title="remove"
           className={styles.remove}
-          onClick={onRemove}
+          onClick={e => {
+            e.preventDefault()
+            e.stopPropagation()
+            onRemove()
+          }}
         >
           x
         </span>

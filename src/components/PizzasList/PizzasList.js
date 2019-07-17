@@ -6,7 +6,7 @@ import styles from './styles.module.css'
 
 class PizzasList extends React.PureComponent {
   render() {
-    const { items, onRemoveItem, onClickItem } = this.props
+    const { items, onRemoveTopping, onRemoveItem, onClickItem } = this.props
     return (
       <ul className={styles.list}>
         { items.map(item => {
@@ -18,7 +18,9 @@ class PizzasList extends React.PureComponent {
                 {name}
                 - Toppings:
                 { toppings.length > 0
-                    ? toppings.map(topping => <Pill key={topping._id} text={topping.name} />)
+                    ? toppings.map(topping => <Pill key={topping._id} text={topping.name}
+                      onRemove={() => onRemoveTopping(item, topping)}
+                      />)
                     : '0 selected'
                 }
               </span>

@@ -8,6 +8,13 @@ export const types = generateActionTypes([
   'addTopping',
   'removeTopping',
 ])
+types.createPizzaClear = 'CREATE_PIZZA_CLEAR'
+
+export function createPizzaClear() {
+  return {
+    type: types.createPizzaClear,
+  }
+}
 
 export function getPizzas() {
   return {

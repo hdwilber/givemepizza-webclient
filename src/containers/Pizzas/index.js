@@ -16,6 +16,8 @@ function mapDispatchToProps(dispatch) {
     getPizzas: () => dispatch(pizzasActions.getPizzas()),
     createPizza: data => dispatch(pizzasActions.createPizza(data)),
     deletePizza: pizzaId => dispatch(pizzasActions.deletePizza(pizzaId)),
+    removeTopping: (pizzaId, toppingId) => dispatch(pizzasActions.removeTopping(pizzaId, toppingId)),
+    clear: () => dispatch(pizzasActions.createPizzaClear()),
   }
 }
 

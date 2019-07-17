@@ -12,6 +12,12 @@ const initialState = {
 
 export default function toppings(state = initialState, action) {
   switch(action.type) {
+    case types.createToppingClear: {
+      return {
+        ...state,
+        createTopping: null,
+      }
+    }
     case types.getToppings[0]: {
       return {
         ...state,

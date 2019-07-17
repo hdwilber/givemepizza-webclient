@@ -12,6 +12,7 @@ class Pizzas extends React.PureComponent {
   }
 
   componentDidMount() {
+    this.props.clear()
     this.props.getPizzas()
   }
 
@@ -49,6 +50,10 @@ class Pizzas extends React.PureComponent {
       showToppingsSelector: false,
     })
   }
+  handleRemoveTopping = (pizza, topping) => {
+    const { removeTopping } = this.props
+    removeTopping(pizza._id, topping._id)
+  }
 
   render() {
     const { pizzas, errors } = this.props
@@ -72,6 +77,7 @@ class Pizzas extends React.PureComponent {
           <PizzasList items={pizzas}
             onClickItem={this.handleListClickItem}
             onRemoveItem={this.handleListRemoveItem}
+            onRemoveTopping={this.handleRemoveTopping}
           />
         )}
         {showToppingsSelector && <ToppingsSelectorModal 

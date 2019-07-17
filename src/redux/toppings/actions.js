@@ -5,6 +5,14 @@ export const types = generateActionTypes([
   'deleteTopping',
 ])
 
+types.createToppingClear = 'CREATE_TOPPING_CLEAR'
+
+export function createToppingClear() {
+  return {
+    type: types.createToppingClear,
+  }
+}
+
 export function getToppings() {
   return {
     type: types.getToppings[0],

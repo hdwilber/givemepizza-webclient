@@ -6,24 +6,14 @@ import styles from './styles.module.css'
 
 class PizzasList extends React.PureComponent {
   render() {
-    const { items, onRemoveItem } = this.props
-    //const items = oItems.map(a => {
-      //return {
-        //...a,
-        //toppings: [
-          //{
-            //name: 'PEacock',
-          //}
-        //]
-      //}
-    //})
+    const { items, onRemoveItem, onClickItem } = this.props
     return (
       <ul className={styles.list}>
         { items.map(item => {
           const { _id, toppings, name } = item
           const toppingsString = toppings.map(top => top.name).join(',')
           return (
-            <li key={_id}>
+            <li key={_id} onClick={e => { onClickItem(item) }}>
               {name}
               - Toppings:
               { toppings.map(topping => <Pill text={topping.name} />)}

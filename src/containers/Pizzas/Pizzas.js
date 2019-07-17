@@ -1,10 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { PizzasList } from '../../components'
+import ToppingsSelectorModal from '../ToppingsSelectorModal'
 
 class Pizzas extends React.PureComponent {
   state = {
     newPizza: '',
+    showToppingsSelector: false,
+    selectedPizza: null,
   }
 
   componentDidMount() {
@@ -30,10 +33,22 @@ class Pizzas extends React.PureComponent {
     console.log('Request remotion of pizza: %o', pizza);
 
   }
+  handleListClickItem = pizza => {
+    this.setState({
+      selectedPizza: pizza,
+      showToppingsSelector: true,
+    })
+  }
 
+  handleToppingsSelectorClose = () => {
+    this.setState({
+      selectedPizza: null,
+      showToppingsSelector: false,
+    })
+  }
   render() {
     const { pizzas } = this.props
-    const { newPizza } = this.state
+    const { selectedPizza, showToppingsSelector, newPizza } = this.state
     return (
       <div>
         <h1>Pizzas</h1>
@@ -46,8 +61,13 @@ class Pizzas extends React.PureComponent {
         </form>
         <h2>Current available Pizzas</h2>
         <PizzasList items={pizzas}
+          onClickItem={this.handleListClickItem}
           onRemoveItem={this.handleListRemoveItem}
         />
+        {showToppingsSelector && <ToppingsSelectorModal 
+          pizza={selectedPizza}
+          onClose={this.handleToppingsSelectorClose}
+        /> }
       </div>
     )
   }

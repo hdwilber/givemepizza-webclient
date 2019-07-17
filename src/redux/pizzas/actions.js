@@ -51,9 +51,9 @@ export function addTopping(pizzaId, toppingId) {
   }
 }
 
-export function deleteTopping(pizzaId, toppingId) {
+export function removeTopping(pizzaId, toppingId) {
   return {
-    type: types.deleteTopping[0],
+    type: types.removeTopping[0],
     payload: {
       pizzaId,
       toppingId,

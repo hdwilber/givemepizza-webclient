@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from './styles.module.css'
 
 class Toppings extends React.PureComponent {
   state = {
@@ -33,7 +34,7 @@ class Toppings extends React.PureComponent {
   }
 
   render() {
-    const { toppings } = this.props
+    const { toppings, errors } = this.props
     const { newTopping } = this.state
     return (
       <div>
@@ -43,6 +44,7 @@ class Toppings extends React.PureComponent {
             Create a new Topping
           </h2>
           <input value={newTopping} name="newTopping" onChange={this.handleChange} />
+          { errors && errors.name && <span className={styles.validationError}>{ errors.name }</span> }
           <button type="submit">Create</button>
         </form>
         <h2>Current available toppings:</h2>

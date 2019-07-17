@@ -34,16 +34,20 @@ export function* createToppingSaga({payload}) {
     })
     const { data } = payload
     const result = yield call(services.createTopping, data )
-    payload.result = result
 
-    yield put({
-      type: types.createTopping[1],
-      payload,
-    })
-    yield put({
-      type: types.getToppings[0],
-      payload,
-    })
+    if (!result.failed) {
+      payload.result = result
+      yield put({
+        type: types.createTopping[1],
+        payload,
+      })
+    } else {
+      payload.error = result.error
+      yield put({
+        type: types.createTopping[2],
+        payload,
+      })
+    }
   } catch (error) {
     payload.error = error
     yield put({

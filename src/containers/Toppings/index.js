@@ -6,7 +6,8 @@ import * as toppingsActions from '../../redux/toppings/actions'
 
 function mapStateToProps(state) {
   return {
-    toppings: _get(state, 'toppings.list.data', [])
+    toppings: _get(state, 'toppings.list.data', []),
+    errors: _get(state, 'toppings.createTopping.error.result.errors', null),
   }
 }
 

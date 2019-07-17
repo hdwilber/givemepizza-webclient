@@ -104,6 +104,15 @@ export async function createTopping(data) {
     const result = await response.json()
     return result.topping
   }
+  if (response.status === 422) {
+    return {
+      failed: true,
+      error: {
+        result: await response.json(),
+        type: 'Validation Error',
+      }
+    }
+  }
   throw new Error('Not able to create a new topping')
 }
 

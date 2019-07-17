@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Pizza from '../Pizza'
+import styles from './styles.module.css'
 
 class PizzasList extends React.PureComponent {
   render() {
-    const { items } = this.props
+    const { items, onRemoveItem } = this.props
     return (
-      <ul>
+      <ul className={styles.list}>
         { items.map(item => {
           const { _id, toppings, name } = item
           const toppingsString = toppings.map(top => top.name).join(',')
@@ -15,6 +16,8 @@ class PizzasList extends React.PureComponent {
               {name}
               - Toppings:
               { toppingsString }
+
+              <button onClick={e => { onRemoveItem(item) }}>delete</button>
             </li>
           )
         })

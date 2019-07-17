@@ -26,21 +26,28 @@ class Pizzas extends React.PureComponent {
     })
   }
 
+  handleListRemoveItem = pizza => {
+    console.log('Request remotion of pizza: %o', pizza);
+
+  }
+
   render() {
     const { pizzas } = this.props
     const { newPizza } = this.state
     return (
       <div>
-        <section>
-          <h1>
+        <h1>Pizzas</h1>
+        <form onSubmit={this.handleSubmit}>
+          <h2>
             Create a new Pizza
-          </h1>
-          <form onSubmit={this.handleSubmit}>
-            <input value={newPizza} name="newPizza" onChange={this.handleChange} />
-            <button type="submit">Create</button>
-          </form>
-        </section>
-        <PizzasList items={pizzas} />
+          </h2>
+          <input value={newPizza} name="newPizza" onChange={this.handleChange} />
+          <button type="submit">Create</button>
+        </form>
+        <h2>Current available Pizzas</h2>
+        <PizzasList items={pizzas}
+          onRemoveItem={this.handleListRemoveItem}
+        />
       </div>
     )
   }

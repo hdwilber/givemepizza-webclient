@@ -5,11 +5,8 @@ const initialState = {
     loaded: false,
     data: [],
   },
-  createPizza: {
-    loading: false,
-    loaded: false,
-    result: null,
-  }
+  createPizza: null,
+  deletePizza: null,
 }
 
 export default function pizzas(state = initialState, action) {
@@ -81,6 +78,39 @@ export default function pizzas(state = initialState, action) {
       }
     }
 
+    case types.deletePizza[0]: {
+      return {
+        ...state,
+        deletePizza: {
+          loading: true,
+          loaded: false,
+        }
+      }
+    }
+
+    case types.deletePizza[1]: {
+      const { result } = action.payload
+      return {
+        ...state,
+        deletePizza: {
+          loading: false,
+          loaded: true,
+          data: result,
+        }
+      }
+    }
+
+    case types.deletePizza[2]: {
+      const { error } = action.payload
+      return {
+        ...state,
+        deletePizza: {
+          loading: false,
+          loaded: true,
+          error,
+        }
+      }
+    }
 
     default:
       return state

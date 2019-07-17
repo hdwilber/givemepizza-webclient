@@ -4,6 +4,8 @@ export const types = generateActionTypes([
   'getPizzas',
   'getPizza',
   'createPizza',
+  'deletePizza',
+  'addTopping',
 ])
 
 export function getPizzas() {
@@ -25,6 +27,35 @@ export function createPizza(data) {
     type: types.createPizza[0],
     payload: {
       data,
+    }
+  }
+}
+
+export function deletePizza(id) {
+  return {
+    type: types.deletePizza[0],
+    payload: {
+      pizzaId: id,
+    }
+  }
+}
+
+export function addTopping(pizzaId, toppingId) {
+  return {
+    type: types.addTopping[0],
+    payload: {
+      pizzaId,
+      toppingId,
+    }
+  }
+}
+
+export function deleteTopping(pizzaId, toppingId) {
+  return {
+    type: types.deleteTopping[0],
+    payload: {
+      pizzaId,
+      toppingId,
     }
   }
 }

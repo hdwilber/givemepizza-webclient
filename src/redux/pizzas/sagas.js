@@ -68,3 +68,90 @@ export function* createPizzaSaga({payload}) {
     })
   }
 }
+
+export function* deletePizzaSaga({payload}) {
+  try {
+    yield put({
+      type: statusTypes.addRequest,
+      payload: {
+        info: {
+          path: 'pizzas.deletePizza',
+          name: 'Delete pizza',
+          description: 'foo',
+        }
+      }
+    })
+    const { pizzaId } = payload
+    const result = yield call(services.removePizza, pizzaId)
+    payload.result = result
+
+    yield put({
+      type: types.deletePizza[1],
+      payload,
+    })
+  } catch (error) {
+    payload.error = error
+    yield put({
+      type: types.deletePizza[2],
+      payload,
+    })
+  }
+}
+
+export function* addToppingSaga({payload}) {
+  try {
+    yield put({
+      type: statusTypes.addRequest,
+      payload: {
+        info: {
+          path: 'pizzas.addTopping',
+          name: 'Add topping to pizza',
+          description: 'foo',
+        }
+      }
+    })
+    const { pizzaId, toppingId } = payload
+    const result = yield call(services.addTopping, pizzaId, toppingId)
+    payload.result = result
+
+    yield put({
+      type: types.addTopping[1],
+      payload,
+    })
+  } catch (error) {
+    payload.error = error
+    yield put({
+      type: types.addTopping[2],
+      payload,
+    })
+  }
+}
+
+export function* deleteToppingSaga({payload}) {
+  try {
+    yield put({
+      type: statusTypes.addRequest,
+      payload: {
+        info: {
+          path: 'pizzas.deleteTopping',
+          name: 'Delete topping to pizza',
+          description: 'foo',
+        }
+      }
+    })
+    const { pizzaId, toppingId } = payload
+    const result = yield call(services.deleteTopping, pizzaId, toppingId)
+    payload.result = result
+
+    yield put({
+      type: types.deleteTopping[1],
+      payload,
+    })
+  } catch (error) {
+    payload.error = error
+    yield put({
+      type: types.deleteTopping[2],
+      payload,
+    })
+  }
+}

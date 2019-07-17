@@ -45,6 +45,7 @@ class Pizzas extends React.PureComponent {
       showToppingsSelector: false,
     })
   }
+
   render() {
     const { pizzas } = this.props
     const { selectedPizza, showToppingsSelector, newPizza } = this.state
@@ -80,5 +81,4 @@ Pizzas.propTypes = {
 Pizzas.defaultProps = {
   pizzas: [],
 }
-
 export default Pizzas

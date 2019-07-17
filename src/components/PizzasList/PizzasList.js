@@ -17,7 +17,10 @@ class PizzasList extends React.PureComponent {
               <span onClick={e => { onClickItem(item) }}>
                 {name}
                 - Toppings:
-                { toppings.map(topping => <Pill key={topping._id} text={topping.name} />)}
+                { toppings.length > 0
+                    ? toppings.map(topping => <Pill key={topping._id} text={topping.name} />)
+                    : '0 selected'
+                }
               </span>
 
               <button onClick={e => { e.preventDefault(); onRemoveItem(item) }}>delete</button>

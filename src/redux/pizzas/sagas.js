@@ -133,7 +133,7 @@ export function* removeToppingSaga({payload}) {
       type: statusTypes.addRequest,
       payload: {
         info: {
-          path: 'pizzas.removeToppingSaga',
+          path: 'pizzas.removeTopping',
           name: `Remove topping to pizza: ${toppingId}`,
           description: 'foo',
         }

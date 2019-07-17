@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TopBar /> should match snapshot 1`] = `
+<TopBar
+  current={0}
+  onSelect={[MockFunction]}
+/>
+`;

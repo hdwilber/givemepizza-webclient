@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RequestStatus /> should match snapshot 1`] = `
+<RequestStatus
+  requestsList={
+    Array [
+      Object {
+        "name": "Some loading request",
+        "status": Object {
+          "loaded": false,
+          "loading": true,
+        },
+      },
+      Object {
+        "name": "Some correctly loaded request",
+        "status": Object {
+          "data": Object {},
+          "loaded": true,
+          "loading": false,
+        },
+      },
+      Object {
+        "name": "Some failing request",
+        "status": Object {
+          "error": Object {},
+          "loaded": true,
+          "loading": false,
+        },
+      },
+      Object {
+        "name": "Not loaded request",
+        "status": null,
+      },
+    ]
+  }
+/>
+`;

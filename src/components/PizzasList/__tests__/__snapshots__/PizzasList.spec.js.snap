@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PizzasList /> should match snapshot 1`] = `
+<PizzasList
+  items={
+    Array [
+      Object {
+        "_id": "1",
+        "name": "Pizza 1",
+        "toppings": Array [
+          Object {
+            "_id": "pill-1",
+            "name": "Simple Topping",
+          },
+        ],
+      },
+      Object {
+        "_id": "2",
+        "name": "Pizza 2",
+        "toppings": Array [],
+      },
+      Object {
+        "_id": "3",
+        "name": "Pizza 3",
+        "toppings": Array [],
+      },
+    ]
+  }
+  onClickItem={[MockFunction]}
+  onRemoveItem={[MockFunction]}
+  onRemoveTopping={[MockFunction]}
+/>
+`;

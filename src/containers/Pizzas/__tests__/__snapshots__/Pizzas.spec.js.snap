@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PizzasComponent /> Pizzas array with length greather than 0 should match snapshot 1`] = `
+<Pizzas
+  clear={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  createPizza={[MockFunction]}
+  deletePizza={[MockFunction]}
+  errors={Object {}}
+  getPizzas={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  pizzas={
+    Array [
+      Object {
+        "_id": "1",
+        "name": "Pizza 1",
+        "toppings": Array [
+          Object {
+            "_id": "pill-1",
+            "name": "Simple Topping",
+          },
+        ],
+      },
+      Object {
+        "_id": "2",
+        "name": "Pizza 2",
+        "toppings": Array [],
+      },
+      Object {
+        "_id": "3",
+        "name": "Pizza 3",
+        "toppings": Array [],
+      },
+    ]
+  }
+  removeTopping={[MockFunction]}
+/>
+`;

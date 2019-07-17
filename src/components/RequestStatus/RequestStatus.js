@@ -2,20 +2,26 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './styles.module.css'
 
+export const messages = {
+  done: 'Request successful',
+  wrong: 'Something went wrong',
+  loading: 'Loading request',
+  notStarted: 'Request not started',
+}
 function parseStatus(status) {
   if (status) {
     const { loading, loaded, error } = status
     if (!loading && loaded) {
       if (error) {
-        return 'Something went wrong'
+        return messages.wrong
       }
-      return 'Done'
+      return messages.done
     }
     if (loading) {
-      return 'loading'
+      return messages.loading
     }
   }
-  return 'not loaded'
+  return messages.notStarted
 }
 class RequestStatus extends React.PureComponent {
   render() {

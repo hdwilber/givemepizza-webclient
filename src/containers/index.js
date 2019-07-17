@@ -34,3 +34,9 @@ export default connect(
     changePage: page => dispatch(setPage(page)),
   })
 )(GiveMePizza)
+
+GiveMePizza.propTypes = {
+  page: PropTypes.number,
+  changePage: PropTypes.func,
+}
+

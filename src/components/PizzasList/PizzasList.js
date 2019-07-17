@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Pizza from '../Pizza'
 import Pill from '../Pill'
 import styles from './styles.module.css'
 
@@ -11,7 +10,6 @@ class PizzasList extends React.PureComponent {
       <ul className={styles.list}>
         { items.map(item => {
           const { _id, toppings, name } = item
-          const toppingsString = toppings.map(top => top.name).join(',')
           return (
             <li key={_id} onClick={e => { onClickItem(item) }} >
               <h1>{name}</h1>

@@ -141,7 +141,7 @@ export default function pizzas(state = initialState, action) {
       }
     }
     case types.addTopping[1]: {
-      const { pizzaId, toppingId, result } = action.payload
+      const { pizzaId, result } = action.payload
       const  list = _get(state, 'list')
       const newPizzas = list.data.map(pizza => {
         if (pizza._id === pizzaId) {

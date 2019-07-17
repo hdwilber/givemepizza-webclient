@@ -4,7 +4,7 @@ import styles from './styles.module.css'
 
 function parseStatus(status) {
   if (status) {
-    const { loading, loaded, data, error } = status
+    const { loading, loaded, error } = status
     if (!loading && loaded) {
       if (error) {
         return 'Something went wrong'
@@ -24,7 +24,7 @@ class RequestStatus extends React.PureComponent {
     return (
       <div className={styles.status}>
         { requestsList.map(request => {
-            const { name, description, status } = request
+            const { name, status } = request
             return (
               <p key={name}>
                 <b>{name}</b>&nbsp;

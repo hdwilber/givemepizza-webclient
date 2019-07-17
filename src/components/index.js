@@ -1,7 +1,12 @@
 import PizzasList from './PizzasList'
-import Pizza from './Pizza'
+import Pill from './Pill'
+import RequestStatus from './RequestStatus'
+import TopBar from './TopBar'
 
 export {
   PizzasList,
-  Pizza,
+  Pill,
+  RequestStatus,
+  TopBar,
+
 }

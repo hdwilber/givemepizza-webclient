@@ -10,6 +10,7 @@ class Pill extends React.PureComponent {
       <div className={styles.pill}>
         <span>{ text }</span>
         <span 
+          title="remove"
           className={styles.remove}
           onClick={onRemove}
         >
@@ -27,3 +28,5 @@ Pill.propTypes = {
 Pill.defaultProps = {
   onRemove: _noop,
 }
+
+export default Pill

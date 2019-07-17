@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './styles.module.css'
 import _debounce from 'lodash/debounce'
+import _noop from 'lodash/noop'
 
 class ToppingsSelectorModal extends React.PureComponent {
   componentDidMount() {
@@ -39,8 +40,13 @@ class ToppingsSelectorModal extends React.PureComponent {
               )
               })
             }
-            { toppings.length === 0 && (<p>No toppings available. Create ones</p>) }
-            <button onClick={onClose}>Done</button>
+            { !toppings.length && (<p>No toppings available. Create ones</p>) }
+            <div className={styles.actions}>
+              { !toppings.length && (
+                <button onClick={() => this.props.goToToppingsPage()}>Toppings Page</button>
+              )}
+              <button onClick={onClose}>Close</button>
+            </div>
           </div>
         </div>
       )
@@ -53,10 +59,12 @@ ToppingsSelectorModal.propTypes = {
   toppings: PropTypes.array,
   pizzaId: PropTypes.string,
   pizza: PropTypes.object,
+  goToToppingsPage: PropTypes.func,
 }
 ToppingsSelectorModal.defaultProps = {
   toppings: [],
   selected: [],
+  goToToppingsPage: _noop,
 }
 
 export default ToppingsSelectorModal

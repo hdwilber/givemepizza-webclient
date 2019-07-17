@@ -45,19 +45,22 @@ class Toppings extends React.PureComponent {
           <input value={newTopping} name="newTopping" onChange={this.handleChange} />
           <button type="submit">Create</button>
         </form>
-        <h2>Current available toppings</h2>
-        <ul>
-          { toppings.map(topping => {
-            const { name } = topping
-            return (
-              <li>
-                {name}
-                <button onClick={() => this.handleDeleteClick(topping)}>X</button>
-              </li>
-            )
-            })
-          }
-        </ul>
+        <h2>Current available toppings:</h2>
+        { !toppings.length && <p>There are not toppings</p> }
+        { !!toppings.length && (
+          <ul>
+            { toppings.map(topping => {
+              const { _id, name } = topping
+              return (
+                <li key={_id}>
+                  {name}
+                  <button onClick={() => this.handleDeleteClick(topping)}>X</button>
+                </li>
+              )
+              })
+            }
+          </ul>
+        )}
       </div>
     )
   }

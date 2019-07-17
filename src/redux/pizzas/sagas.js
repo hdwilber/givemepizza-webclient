@@ -53,12 +53,20 @@ export function* createPizzaSaga({payload}) {
     })
     const { data } = payload
     const result = yield call(services.createPizza, data )
-    payload.result = result
+    if (!result.failed) {
+      payload.result = result
 
-    yield put({
-      type: types.createPizza[1],
-      payload,
-    })
+      yield put({
+        type: types.createPizza[1],
+        payload,
+      })
+    } else {
+      payload.error = result.error
+      yield put({
+        type: types.createPizza[2],
+        payload,
+      })
+    }
   } catch (error) {
     payload.error = error
     yield put({

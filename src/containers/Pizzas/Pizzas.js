@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { PizzasList } from '../../components'
 import ToppingsSelectorModal from '../ToppingsSelectorModal'
+import styles from './styles.module.css'
 
 class Pizzas extends React.PureComponent {
   state = {
@@ -19,6 +20,9 @@ class Pizzas extends React.PureComponent {
     const { newPizza } = this.state
     this.props.createPizza({
       name: newPizza,
+    })
+    this.setState({
+      newPizza: '',
     })
   }
 
@@ -47,7 +51,7 @@ class Pizzas extends React.PureComponent {
   }
 
   render() {
-    const { pizzas } = this.props
+    const { pizzas, errors } = this.props
     const { selectedPizza, showToppingsSelector, newPizza } = this.state
     return (
       <div>
@@ -56,14 +60,20 @@ class Pizzas extends React.PureComponent {
           <h2>
             Create a new Pizza
           </h2>
-          <input value={newPizza} name="newPizza" onChange={this.handleChange} />
+          <input value={newPizza} name="newPizza" onChange={this.handleChange}
+            invalid={errors && errors.name}
+          />
+          { errors && errors.name && <span className={styles.validationError}>{ errors.name }</span> }
           <button type="submit">Create</button>
         </form>
         <h2>Current available Pizzas</h2>
-        <PizzasList items={pizzas}
-          onClickItem={this.handleListClickItem}
-          onRemoveItem={this.handleListRemoveItem}
-        />
+        { !pizzas.length && <p>There are not pizzas</p> }
+        { !!pizzas.length && (
+          <PizzasList items={pizzas}
+            onClickItem={this.handleListClickItem}
+            onRemoveItem={this.handleListRemoveItem}
+          />
+        )}
         {showToppingsSelector && <ToppingsSelectorModal 
           pizzaId={selectedPizza._id}
           onClose={this.handleToppingsSelectorClose}

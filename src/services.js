@@ -29,6 +29,15 @@ export async function createPizza(data) {
     const result = await response.json()
     return result.pizza
   }
+  if (response.status === 422) {
+    return {
+      failed: true,
+      error: {
+        result: await response.json(),
+        type: 'Validation Error',
+      }
+    }
+  }
   throw new Error('Not able to create a new pizza')
 }
 

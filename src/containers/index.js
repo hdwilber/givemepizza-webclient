@@ -5,19 +5,15 @@ import Pizzas from './Pizzas'
 import Toppings from './Toppings'
 import RequestStatus from './RequestStatus'
 import { Pages } from '../constants'
+import { connect } from 'react-redux'
+import { setPage } from '../redux/app/actions'
 
 class GiveMePizza extends React.PureComponent {
-  state = {
-    page: Pages.pizzas,
-  }
-
   handleTopBarSelect = page => {
-    this.setState({
-      page,
-    })
+    this.props.changePage(page)
   }
   render() {
-    const { page } = this.state
+    const { page } = this.props
     return (
       <div className="pizza">
         <TopBar onSelect={this.handleTopBarSelect}
@@ -30,4 +26,11 @@ class GiveMePizza extends React.PureComponent {
     )
   }
 }
-export default GiveMePizza
+export default connect(
+  state => ({
+    page: state.app.page,
+  }),
+  dispatch => ({
+    changePage: page => dispatch(setPage(page)),
+  })
+)(GiveMePizza)

@@ -6,7 +6,8 @@ import Pizzas from './Pizzas'
 function mapStateToProps(state) {
   const { pizzas } = state
   return {
-    pizzas: _get(pizzas, 'list.data', [])
+    pizzas: _get(pizzas, 'list.data', []),
+    errors: _get(pizzas, 'createPizza.error.result.errors', null),
   }
 }
 

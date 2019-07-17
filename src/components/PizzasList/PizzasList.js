@@ -23,7 +23,11 @@ class PizzasList extends React.PureComponent {
                   : '0 selected'
               }
 
-              <button className={styles.remove} onClick={e => { e.preventDefault(); onRemoveItem(item) }}>
+              <button className={styles.remove} onClick={e => { 
+                e.preventDefault();
+                e.stopPropagation();
+                onRemoveItem(item)
+              }}>
                 X
               </button>
             </li>

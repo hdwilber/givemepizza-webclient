@@ -39,7 +39,6 @@ class ToppingsSelectorModal extends React.PureComponent {
             <h2>Select toppings for: { pizza.name } </h2>
             { toppings.map(topping => {
               const { name, _id } = topping
-              console.log(topping)
               const isSelected = pizza.toppings.find(t => t._id === _id)
               return (
                 <div key={_id} >

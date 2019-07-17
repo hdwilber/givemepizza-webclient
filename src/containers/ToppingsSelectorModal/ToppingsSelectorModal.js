@@ -18,11 +18,23 @@ class ToppingsSelectorModal extends React.PureComponent {
     }
   }, 500)
 
+  handleKeyDown = e => {
+    const { onClose } = this.props
+    if(e.key === 'Escape') {
+      e.preventDefault()
+      onClose()
+    }
+  }
+  handleContainerRef = ref => {
+    if (ref) {
+      ref.focus()
+    }
+  }
   render() {
     const { toppings, pizza, onClose } = this.props
     if (pizza) {
       return (
-        <div className={styles.layer}>
+        <div className={styles.layer} tabIndex="-1" onKeyDown={this.handleKeyDown} ref={this.handleContainerRef}>
           <div className={styles.modal}>
             <h2>Select toppings for: { pizza.name } </h2>
             { toppings.map(topping => {

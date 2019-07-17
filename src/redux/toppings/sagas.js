@@ -5,7 +5,7 @@ import { types as statusTypes } from '../status/actions'
 
 export function* getToppingsSaga({ payload }) {
   try {
-    const result = yield call(services.getToppings)
+    const result = yield call(services.getAllToppings)
     payload.result = result
     yield put({
       type: types.getToppings[1],

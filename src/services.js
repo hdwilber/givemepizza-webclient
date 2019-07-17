@@ -74,11 +74,11 @@ export async function deleteTopping(id, toppingId) {
   throw new Error('Not able to delete a topping in pizza')
 }
 
-async function getAllToppings() {
+export async function getAllToppings() {
   const response = await fetch(`${REACT_APP_API_URL}/toppings`)
   if (response.ok) {
     const result = await response.json()
-    return result.pizzas
+    return result.toppings
   }
   throw new Error('Not able to fetch list of toppings')
 }

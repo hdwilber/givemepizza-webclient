@@ -1,7 +1,7 @@
 import { generateActionTypes } from '../utils'
 export const types = generateActionTypes([
   'getToppings',
-  'addTopping',
+  'createTopping',
   'deleteTopping',
 ])
 
@@ -12,9 +12,9 @@ export function getToppings() {
   }
 }
 
-export function addTopping(data) {
+export function createTopping(data) {
   return {
-    type: types.addTopping[0],
+    type: types.createTopping[0],
     payload: {
       data,
     }

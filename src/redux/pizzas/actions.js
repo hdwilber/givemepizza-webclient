@@ -6,6 +6,7 @@ export const types = generateActionTypes([
   'createPizza',
   'deletePizza',
   'addTopping',
+  'deleteTopping',
 ])
 
 export function getPizzas() {

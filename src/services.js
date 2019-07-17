@@ -55,7 +55,7 @@ export async function addTopping(id, toppingId) {
   })
   if (response.ok) {
     const result = await response.json()
-    return result.toppings
+    return result.topping
   }
   throw new Error('Not able to add a topping in pizza')
 }
@@ -69,7 +69,7 @@ export async function removeTopping(id, toppingId) {
   })
   if (response.ok) {
     const result = await response.json()
-    return result.toppings
+    return result
   }
   throw new Error('Not able to delete a topping in pizza')
 }

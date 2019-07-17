@@ -1,3 +1,4 @@
+import _get from 'lodash/get'
 import { types } from './actions'
 const initialState = {
   list: {
@@ -58,12 +59,17 @@ export default function pizzas(state = initialState, action) {
 
     case types.createPizza[1]: {
       const { result } = action.payload
+      const list = _get(state, 'list')
       return {
         ...state,
         createPizza: {
           loading: false,
           loaded: true,
           data: result,
+        },
+        list: {
+          ...list,
+          data: list.data.concat([result]),
         }
       }
     }
@@ -91,14 +97,19 @@ export default function pizzas(state = initialState, action) {
     }
 
     case types.deletePizza[1]: {
-      const { result } = action.payload
+      const { result, pizzaId } = action.payload
+      const list = _get(state, 'list')
       return {
         ...state,
         deletePizza: {
           loading: false,
           loaded: true,
           data: result,
-        }
+        },
+        list: {
+          ...list,
+          data: list.data.filter(p => p._id !== pizzaId),
+        },
       }
     }
 
@@ -124,13 +135,28 @@ export default function pizzas(state = initialState, action) {
       }
     }
     case types.addTopping[1]: {
-      const { result } = action.payload
+      const { pizzaId, toppingId, result } = action.payload
+      const  list = _get(state, 'list')
+      const newPizzas = list.data.map(pizza => {
+        if (pizza._id === pizzaId) {
+          return {
+            ...pizza,
+            toppings: pizza.toppings.concat([result]),
+          }
+        }
+        return pizza
+      })
+
       return {
         ...state,
         addTopping: {
           loading: false,
           loaded: true,
           data: result,
+        },
+        list: {
+          ...list,
+          data: newPizzas,
         }
       }
     }
@@ -156,13 +182,26 @@ export default function pizzas(state = initialState, action) {
       }
     }
     case types.removeTopping[1]: {
-      const { result } = action.payload
+      const { pizzaId, toppingId, result } = action.payload
+      const newPizzas = _get(state, 'list.data').map(pizza => {
+        if (pizza._id === pizzaId) {
+          return {
+            ...pizza,
+            toppings: pizza.toppings.filter(t => t._id !== toppingId),
+          }
+        }
+        return pizza
+      })
       return {
         ...state,
         removeTopping: {
           loading: false,
           loaded: true,
           data: result,
+        },
+        list: {
+          ...state.list,
+          data: newPizzas,
         }
       }
     }

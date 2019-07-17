@@ -13,12 +13,14 @@ class PizzasList extends React.PureComponent {
           const { _id, toppings, name } = item
           const toppingsString = toppings.map(top => top.name).join(',')
           return (
-            <li key={_id} onClick={e => { onClickItem(item) }}>
-              {name}
-              - Toppings:
-              { toppings.map(topping => <Pill text={topping.name} />)}
+            <li key={_id} >
+              <span onClick={e => { onClickItem(item) }}>
+                {name}
+                - Toppings:
+                { toppings.map(topping => <Pill key={topping._id} text={topping.name} />)}
+              </span>
 
-              <button onClick={e => { onRemoveItem(item) }}>delete</button>
+              <button onClick={e => { e.preventDefault(); onRemoveItem(item) }}>delete</button>
             </li>
           )
         })

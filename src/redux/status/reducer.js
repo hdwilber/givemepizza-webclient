@@ -11,7 +11,10 @@ export default function status(state = initialState, action) {
       const { requests } = state
       return {
         ...state,
-        requests: requests.concat([info]),
+        requests: requests.concat([{
+          ...info,
+          name: `[${requests.length +1}] ${info.name}`,
+        }]),
       }
     }
     default: {

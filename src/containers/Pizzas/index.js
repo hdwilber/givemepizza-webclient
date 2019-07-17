@@ -14,6 +14,7 @@ function mapDispatchToProps(dispatch) {
   return {
     getPizzas: () => dispatch(pizzasActions.getPizzas()),
     createPizza: data => dispatch(pizzasActions.createPizza(data)),
+    deletePizza: pizzaId => dispatch(pizzasActions.deletePizza(pizzaId)),
   }
 }
 

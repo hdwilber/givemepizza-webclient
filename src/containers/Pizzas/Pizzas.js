@@ -30,8 +30,7 @@ class Pizzas extends React.PureComponent {
   }
 
   handleListRemoveItem = pizza => {
-    console.log('Request remotion of pizza: %o', pizza);
-
+    this.props.deletePizza(pizza._id)
   }
   handleListClickItem = pizza => {
     this.setState({
@@ -65,7 +64,7 @@ class Pizzas extends React.PureComponent {
           onRemoveItem={this.handleListRemoveItem}
         />
         {showToppingsSelector && <ToppingsSelectorModal 
-          pizza={selectedPizza}
+          pizzaId={selectedPizza._id}
           onClose={this.handleToppingsSelectorClose}
         /> }
       </div>

@@ -8,11 +8,11 @@ class ToppingsSelectorModal extends React.PureComponent {
   }
 
   handleToggle = (topping, isSelected) => {
-    const { pizza: { _id }, addTopping, removeTopping } = this.props
-    if (isSelected) {
-      addTopping(_id, topping._id)
+    const { pizzaId, addTopping, removeTopping } = this.props
+    if (!isSelected) {
+      addTopping(pizzaId, topping._id)
     } else {
-      removeTopping(_id, topping._id)
+      removeTopping(pizzaId, topping._id)
     }
   }
 
@@ -25,9 +25,10 @@ class ToppingsSelectorModal extends React.PureComponent {
             <ul>
               { toppings.map(topping => {
                 const { name, _id } = topping
+                console.log(topping)
                 const isSelected = pizza.toppings.find(t => t._id === _id)
                 return (
-                  <li className={isSelected ? styles.selected: ''}>
+                  <li key={_id} className={isSelected ? styles.selected: ''}>
                     <button onClick={() => this.handleToggle(topping, isSelected)}>{ name }</button>
                   </li>
                 )
@@ -45,6 +46,7 @@ class ToppingsSelectorModal extends React.PureComponent {
 
 ToppingsSelectorModal.propTypes = {
   toppings: PropTypes.array,
+  pizzaId: PropTypes.string,
   pizza: PropTypes.object,
 }
 ToppingsSelectorModal.defaultProps = {

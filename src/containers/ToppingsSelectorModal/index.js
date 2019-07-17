@@ -4,9 +4,10 @@ import ToppingsSelectorModal from './ToppingsSelectorModal'
 import * as pizzasActions from '../../redux/pizzas/actions'
 import * as toppingsActions from '../../redux/toppings/actions'
 
-function mapStateToProps(state) {
+function mapStateToProps(state, { pizzaId }) {
   return {
-    toppings: _get(state, 'toppings.list.data', [])
+    toppings: _get(state, 'toppings.list.data', []),
+    pizza: _get(state, 'pizzas.list.data').find(pizza => pizza._id === pizzaId),
   }
 }
 

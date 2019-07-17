@@ -99,17 +99,17 @@ export function* deletePizzaSaga({payload}) {
 
 export function* addToppingSaga({payload}) {
   try {
+    const { pizzaId, toppingId } = payload
     yield put({
       type: statusTypes.addRequest,
       payload: {
         info: {
           path: 'pizzas.addTopping',
-          name: 'Add topping to pizza',
+          name: `Add topping to pizza: ${toppingId}`,
           description: 'foo',
         }
       }
     })
-    const { pizzaId, toppingId } = payload
     const result = yield call(services.addTopping, pizzaId, toppingId)
     payload.result = result
 
@@ -128,17 +128,17 @@ export function* addToppingSaga({payload}) {
 
 export function* removeToppingSaga({payload}) {
   try {
+    const { pizzaId, toppingId } = payload
     yield put({
       type: statusTypes.addRequest,
       payload: {
         info: {
           path: 'pizzas.removeToppingSaga',
-          name: 'Remove topping from pizza',
+          name: `Remove topping to pizza: ${toppingId}`,
           description: 'foo',
         }
       }
     })
-    const { pizzaId, toppingId } = payload
     const result = yield call(services.removeTopping, pizzaId, toppingId)
     payload.result = result
 

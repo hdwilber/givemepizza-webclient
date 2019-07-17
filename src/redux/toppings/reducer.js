@@ -68,7 +68,6 @@ export default function toppings(state = initialState, action) {
           ...list,
           data: list.data.concat([result]),
         }
-
       }
     }
 
@@ -107,8 +106,7 @@ export default function toppings(state = initialState, action) {
         list: {
           ...list,
           data: list.data.filter(t => t._id !== toppingId),
-        }
-        
+        },
       }
     }
 
